@@ -1,6 +1,10 @@
 <script setup>
+import { createTheme, inputDark, datePickerDark } from 'naive-ui'
 </script>
 
 <template>
-  <router-view />
+  <n-config-provider>
+    <router-view />
+  </n-config-provider>
+  
 </template>
