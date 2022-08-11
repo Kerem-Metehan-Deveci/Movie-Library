@@ -1,10 +1,22 @@
 <script setup>
-import { createTheme, inputDark, datePickerDark } from 'naive-ui'
+import { NConfigProvider, darkTheme, lightTheme } from 'naive-ui'
+import DefaultLayout from '@/layouts/DefaultLayout.vue';
+import '@/assets/scss/reset.scss';
+import { useMainStore } from '@/stores/mainStore';
+import { computed } from 'vue';
+
+const mainStore= useMainStore();
+
+const themes = {
+  dark: darkTheme,
+  light: lightTheme
+};
+
+const theme = computed(() => themes[mainStore.theme])
 </script>
 
 <template>
-  <n-config-provider>
-    <router-view />
+  <n-config-provider :theme="theme">
+    <default-layout />
   </n-config-provider>
-  
 </template>
