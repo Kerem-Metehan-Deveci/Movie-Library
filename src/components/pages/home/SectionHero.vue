@@ -2,31 +2,48 @@
 import { SearchOutline, MoonOutline, SunnyOutline } from '@vicons/ionicons5';
 import { computed, ref } from 'vue';
 import { useMainStore } from '@/stores/mainStore';
+import { useMovieStore } from '@/stores/movieStore';
 
 const mainStore = useMainStore();
+const movieStore = useMovieStore();
 
 const themeIcon = computed(
-    () => {
-        if (mainStore.theme === 'dark') {
-            return SunnyOutline;
-        } else {
-            return MoonOutline
-        }
-    }
+    () => mainStore.theme === 'dark' ? SunnyOutline : MoonOutline
 )
 const sectionSearchBg = computed(() => `url(${import.meta.env.VITE_SEARCH_BACKGROUND})`);
 const searchText = ref('');
+
+let timeoutId = null;
+const getMovies = () => {
+    if(timeoutId) {
+        clearTimeout(timeoutId)
+    }
+
+    timeoutId = setTimeout(async () => {
+        try {
+            movieStore.toggleMovieLoading();
+            await movieStore.fetchMovies({
+                searchText: searchText.value,
+            })
+        } catch(e) {
+            console.log(e);
+        } finally {
+            movieStore.toggleMovieLoading();
+        }
+    }, 500)
+}
 </script>
 
 <template>
     <div class="section-hero">
         <div class="w-50 mb-5 d-flex align-items-center gap-2">
             <n-input
-                v-model:value="searchText"
-                round
-                placeholder="Search..."
-                size="large"
-                type="text"
+                    v-model:value="searchText"
+                    round
+                    placeholder="Search..."
+                    size="large"
+                    type="text"
+                    @input="getMovies"
             >
                 <template #suffix>
                     <n-icon :component="SearchOutline" />
@@ -50,13 +67,13 @@ const searchText = ref('');
 
 <style lang="scss">
     .section-hero {
-        height: 500px;
-        background-color: rgba(0, 128, 0, 0.12);
-        position: relative;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.12);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 
     &:after {
         content: '';
@@ -69,6 +86,6 @@ const searchText = ref('');
         background-image: v-bind(sectionSearchBg);
         background-position: center center;
         background-size: cover;
+        }
     }
-}
 </style>
