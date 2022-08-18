@@ -23,7 +23,7 @@ const props = defineProps({
         </div>
         {{ description }}
 
-        <template #action>
+<template #action>
             <div class="text-end">
                 <n-button icon-placement="right">
                     <template #icon>

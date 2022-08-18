@@ -34,7 +34,7 @@ const getMovies = () => {
 }
 </script>
 
-<template>
+    <template>
     <div class="section-hero">
         <div class="w-50 mb-5 d-flex align-items-center gap-2">
             <n-input
@@ -63,12 +63,12 @@ const getMovies = () => {
             </n-button>
         </div>
     </div>
-</template>
+    </template>
 
-<style lang="scss">
+    <style lang="scss">
     .section-hero {
     height: 500px;
-    background-color: rgba(0, 0, 0, 0.12);
+    background-color: rgba(0, 128, 0, 0.12);
     position: relative;
     z-index: 1;
     display: flex;
@@ -86,6 +86,6 @@ const getMovies = () => {
         background-image: v-bind(sectionSearchBg);
         background-position: center center;
         background-size: cover;
-        }
+    }
     }
 </style>

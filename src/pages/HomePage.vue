@@ -1,7 +1,7 @@
 <script setup>
 import { useMovieStore } from '@/stores/movieStore';
-import SectionHero from '../components/pages/home/SectionHero.vue';
-import CardMovie from './CardMovie.vue';
+import SectionHero from '@/components/pages/home/SectionHero.vue';
+import CardMovie from '@/components/pages/home/CardMovie.vue';
 
 const movieStore = useMovieStore();
 </script>
@@ -42,7 +42,7 @@ const movieStore = useMovieStore();
                         Sonuc Bulunamadi!!
                     </div>
                     <div class="fs-3">
-                        Lutfen arama yapiniz lorem15
+                        Lutfen arama yapiniz
                     </div>
                 </div>
             </template>

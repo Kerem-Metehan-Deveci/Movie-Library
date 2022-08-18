@@ -5,8 +5,7 @@ const routes = [
   },
   {
     path: '/movie-detail',
-    name: 'MovieDetail',
-    component: import('../pages/MovieDetail.vue')
+    component: import('../pages/MovieDetailPage.vue')
   }
 ]
 
