@@ -15,13 +15,23 @@ export const useMovieStore = defineStore('movie', {
       async fetchMovies(payload) {
         const key = import.meta.env.VITE_API_KEY;
 
-        const { data } = await api.get(`/Search/${key}/${payload.searchText}`);
+        const { data } = await api.get('/search/movie/', {
+          params: {
+            query: payload.searchText
+          }
+        });
 
         if(data.errorMessage) {
           throw new Error(data.errorMessage)
         }
         
-        this.movies = data.results;
+        this.movies = data.results.map((item) => ({
+          id: item.id,
+          plot: item.overview,
+          title: item.original_title,
+          image: `${import.meta.env.VITE_API_POSTER_URL}${item.poster_path}`,
+          rating: item.vote_average,
+        }));
       },
       toggleMovieLoading() {
         this.isMoviesLoading = !this.isMoviesLoading;

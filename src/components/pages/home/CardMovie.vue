@@ -5,7 +5,7 @@ const props = defineProps({
     id: { type: String, default: null },
     title: { type: String, default: null },
     image: { type: String, default: null },
-    type: { type: String, default: null },
+    rating: { type: String, default: null },
     description: { type: String, default: null },
 });
 </script>
@@ -18,7 +18,7 @@ const props = defineProps({
 
         <div class="mb-4">
             <n-tag type="warning">
-                {{ type }}
+                {{ rating }}
             </n-tag>
         </div>
         {{ description }}

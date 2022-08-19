@@ -29,7 +29,7 @@ const movieStore = useMovieStore();
                                 :title="movie.title"
                                 :id="movie.id"
                                 :description="movie.description"
-                                :type="movie.resultType"
+                                :rating="movie.rating"
                                 :image="movie.image"
                             />
                         </div>
