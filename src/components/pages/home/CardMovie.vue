@@ -23,16 +23,18 @@ const props = defineProps({
         </div>
         {{ description }}
 
-<template #action>
+        <template #action>
             <div class="text-end">
-                <n-button icon-placement="right">
-                    <template #icon>
-                        <n-icon>
-                            <arrow-forward-outline />
-                        </n-icon>
-                    </template>
-                    Details
-                </n-button>
+                <router-link class="text-decoration-none" :to="{name: 'MovieDetailPage', params: {id: props.id} }">
+                    <n-button icon-placement="right">
+                        <template #icon>
+                            <n-icon>
+                                <arrow-forward-outline />
+                            </n-icon>
+                        </template>
+                        Details 
+                    </n-button>
+                </router-link> 
             </div>
         </template>
     </n-card>
