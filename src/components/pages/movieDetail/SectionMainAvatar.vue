@@ -18,6 +18,7 @@ const firstLettersOfName = props
 <template>
     <div class="d-flex align-items-center gap-2">
         <n-avatar
+            class="bg-yellow-500"
             round
             :size="48"
         >
