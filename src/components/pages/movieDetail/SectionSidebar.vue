@@ -3,17 +3,9 @@ import { computed } from '@vue/reactivity';
 
 const props = defineProps({
     image: { type: String, default: null },
-    rating: { type: Object, default: () => ({}) },
+    rating: { type: Number, default: 0 },
     genreList: { type: Array, default: () => [] },
 });
-
-const ratingList = computed(() => [  //Computed kullanmamızın sebebi bizim datalarımız dinamik olduğu için kontrol etmesi gerekiyor.
-
-    { name: 'Metacritic', value: props.rating.metacritic },
-    { name: 'Rotten Tomatoes', value: props.rating.rottenTomatoes },
-    { name: 'Film Affinity', value: props.rating.filmAffinity },
-    { name: 'imDb', value: props.rating.imDb },
-].filter((item) => item.value));
 </script>
 
 <template>
@@ -24,17 +16,15 @@ const ratingList = computed(() => [  //Computed kullanmamızın sebebi bizim dat
     </div>
 
     <div class="mt-4 d-flex gap-2 flex-wrap">
-        <template v-for="(rating) in ratingList" :key="rating.key">
-            <n-tag type="success">
-                {{ rating.name }} {{ rating.value }} 
-            </n-tag>
-        </template>
+        <n-tag type="success">
+            Rating {{ props.rating }} 
+        </n-tag>
     </div>
 
     <div class="mt-4 d-flex gap-2 flex-wrap mb-4">
-        <template v-for="genre in props.genreList" :key="genre.key">
+        <template v-for="genre in props.genreList" :key="genre.id">
             <n-tag type="warning">
-                {{ genre.value }}
+                {{ genre.name }}
             </n-tag>
         </template>
     </div>

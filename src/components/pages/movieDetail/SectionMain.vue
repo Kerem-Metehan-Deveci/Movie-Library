@@ -4,29 +4,19 @@ import SectionMainAvatar from "@/components/pages/movieDetail/SectionMainAvatar.
 const props = defineProps({
     title: { type: String, default: null },
     plot: { type: String, default: null },
-    directors: { type: Array, default: () => [] },
-    writers: { type: Array, default: () => [] },
-    stars: { type: Array, default: () => [] },
-    companies: { type: Array, default: () => [] },
+    crew: { type: Array, default: () => [] },
+    cast: { type: Array, default: () => [] },
     keywords: { type: Array, default: () => [] },
 });
 
 const sections = [
     {
-        name: 'Directors',
-        list: props.directors,
+        name: 'Cast',
+        list: props.cast,
     },
     {
-        name: 'Writers',
-        list: props.writers,
-    },
-    {
-        name: 'Stars',
-        list: props.stars,
-    },
-    {
-        name: 'Companies',
-        list: props.companies,
+        name: 'Crew',
+        list: props.crew,
     },
 ];
 </script>
@@ -44,13 +34,16 @@ const sections = [
         <div class="mt-5">
             <h2>{{ section.name }}</h2>
 
-            <div class="row gap-3 mt-3">
-                <div class="col-auto d-flex align-items-center gap-2 gap-md-4">
-                    <section-main-avatar
-                        v-for="name in section.list" :key="name.id"
-                        :name="name.name"
-                    />
-                </div>
+            <div class="row mt-3">
+                <template v-for="item in section.list" :key="item.id">
+                    <div class="col-12 col-md-3 g-4 d-flex flex-wrap align-items-center gap-2 gap-md-4">
+                        <section-main-avatar
+                            :name="item.name"
+                            :picture="item.profile_path"
+                            :job="item.job || item.character"
+                        />
+                    </div>
+                </template>
             </div>
         </div>
     </template>
@@ -59,7 +52,7 @@ const sections = [
         <h2>Keywords</h2>
 
         <div class="row gap-3 mt-3">
-            <div class="col-auto d-flex align-items-center gap-2">
+            <div class="col-auto d-flex flex-wrap align-items-center gap-2">
                 <template v-for="keyword in props.keywords" :key="keyword">
                     <n-tag class="text-capitalize" :bordered="false" type="info">
                         {{ keyword }}

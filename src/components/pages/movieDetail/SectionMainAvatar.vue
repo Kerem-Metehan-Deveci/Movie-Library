@@ -1,9 +1,14 @@
 <script setup>
+import { computed } from 'vue';
 const props = defineProps({
     name: { type: String, default: '' },
+    job: { type: String, default: '' },
+    picture: { type: String, default: '' },
 });
 
-const nameFinal = ''
+const profilePath = computed(
+    () => `${import.meta.env.VITE_API_POSTER_URL}${props.picture}`
+)
 const firstLettersOfName = props
     .name
     .split(' ') // Bu komut boşluklarla isimleri bölmemize yarıyor. 
@@ -18,15 +23,23 @@ const firstLettersOfName = props
 <template>
     <div class="d-flex align-items-center gap-2">
         <n-avatar
-            class="bg-yellow-500"
+            v-if="props.picture"
+            round
+            :size="48"
+            :src="profilePath"
+            object-fit="cover"
+        />
+        <n-avatar
+            v-else
             round
             :size="48"
         >
             {{ firstLettersOfName }}
         </n-avatar>
 
-        <span class="fw-bold">
-            {{ props.name }}
+        <span>
+            <div class="fw-bold">{{ props.name }}</div>
+            <div class="small text-muted">{{ props.job }}</div>
         </span>
     </div>
-</template>
+</template> 

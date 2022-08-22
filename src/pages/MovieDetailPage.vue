@@ -67,23 +67,21 @@ init();
         </div>
       </template>
       <template v-else>
-        <div class="row gap-3 h-100">
+        <div class="d-flex gap-3 h-100">
             <div class="col-12 col-md-4 pt-5 px-5 bg-gray-200">
                 <section-sidebar
                     :image="movie.image"
-                    :rating="movie.ratings"
+                    :rating="movie.rating"
                     :genre-list="movie.genreList"
                 />
             </div>
 
-            <div class="col-12 col-md pt-5 text-gray-700">
+            <div class="col-12 col-md-8 pt-5 ps-md-4 text-gray-700">
                 <section-main
                     :title="movie.fullTitle"
                     :plot="movie.plot"
-                    :directors="movie.directorList"
-                    :writers="movie.writerList"
-                    :stars="movie.starList"
-                    :companies="movie.companyList"
+                    :crew="movie.crewList"
+                    :cast="movie.castList"
                     :keywords="movie.keywordList"
                 />
             </div>

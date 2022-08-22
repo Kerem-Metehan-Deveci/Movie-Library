@@ -39,11 +39,28 @@ export const useMovieStore = defineStore('movie', {
       async fetchMovie(payload) {
         const key = import.meta.env.VITE_API_KEY;
 
-        const { data } = await api.get(`/Title/${key}/${payload.id}/FullActor,FullCast,Posters,Images,Trailer,Ratings,Wikipedia,`);
-        
-        // const { data } = await api.get('http://localhost:3001/movie', { baseURL: '' });
+        const promises = [
+          api.get(`/movie/${payload.id}`),
+          api.get(`/movie/${payload.id}/credits`),
+          api.get(`/movie/${payload.id}/keywords`)
+        ]
 
-        return data;
+        const [
+          { data: detailData },
+          { data: creditData },
+          { data: keywordData },
+        ] = await Promise.all(promises);
+
+        return {
+          fullTitle: detailData.original_title,
+          plot: detailData.overview,
+          image: `${import.meta.env.VITE_API_POSTER_URL}${detailData.poster_path}`,
+          rating: detailData.vote_average,
+          genreList: detailData.genres,
+          crewList: creditData.crew.filter((item, index) => index < 20),
+          castList: creditData.cast.filter((item, index) => index < 20),
+          keywordList: keywordData.keywords.map((item) => item.name),
+        };
       },
     },
 })
