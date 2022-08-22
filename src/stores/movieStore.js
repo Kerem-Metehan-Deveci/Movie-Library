@@ -33,6 +33,23 @@ export const useMovieStore = defineStore('movie', {
           rating: item.vote_average,
         }));
       },
+      async fetchPopularMovies() {
+        const key = import.meta.env.VITE_API_KEY;
+
+        const { data } = await api.get('/movie/popular');
+
+        if(data.errorMessage) {
+          throw new Error(data.errorMessage)
+        }
+        
+        this.movies = data.results.map((item) => ({
+          id: item.id,
+          plot: item.overview,
+          title: item.original_title,
+          image: `${import.meta.env.VITE_API_POSTER_URL}${item.poster_path}`,
+          rating: item.vote_average,
+        }));
+      },
       toggleMovieLoading() {
         this.isMoviesLoading = !this.isMoviesLoading;
       },

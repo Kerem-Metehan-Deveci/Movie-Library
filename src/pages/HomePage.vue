@@ -4,6 +4,15 @@ import SectionHero from '@/components/pages/home/SectionHero.vue';
 import CardMovie from '@/components/pages/home/CardMovie.vue';
 
 const movieStore = useMovieStore();
+const init =  async () => {
+    try {
+        movieStore.toggleMovieLoading();
+        await movieStore.fetchPopularMovies();
+    } finally{
+        movieStore.toggleMovieLoading();
+    }
+}
+init();
 </script>
 
 <template>
@@ -11,7 +20,7 @@ const movieStore = useMovieStore();
 
     <div class="section-search-list">
         <div class="container mt-5">
-            <h1>Search Results</h1>
+            <h1>Movies</h1>
             <template v-if="movieStore.isMoviesLoading">
                 <div class="row mt-5 g-3">
                     <template v-for="n in 8" :key="n">
