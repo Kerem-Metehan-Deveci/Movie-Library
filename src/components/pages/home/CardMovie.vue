@@ -26,7 +26,7 @@ const props = defineProps({
         <template #action>
             <div class="text-end">
                 <router-link class="text-decoration-none" :to="{name: 'MovieDetailPage', params: {id: props.id} }">
-                    <n-button icon-placement="right">
+                    <n-button icon-placement="right" type="warning" ghost>
                         <template #icon>
                             <n-icon>
                                 <arrow-forward-outline />
