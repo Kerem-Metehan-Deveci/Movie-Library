@@ -10,17 +10,17 @@ const props = defineProps({
 });
 const router = useRouter();
 const back =() => {
-    router.go(-1)
+    router.go()
 }
 </script>
 
 <template>
     <div class="mb-3">
-        <n-button quaternaryvis @click="back">
+        <n-button quaternaryvis type="warning" ghost @click="back">
             <template #icon>
                 <n-icon> <arrow-back-outline /> </n-icon>
             </template>
-            <span class="mt-1 fw-bold">Back</span>
+            <span class="fw-bold">Back</span>
         </n-button>
     </div>
     <div>
