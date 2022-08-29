@@ -36,7 +36,7 @@ const sections = [
 
             <div class="row mt-3">
                 <template v-for="item in section.list" :key="item.id">
-                    <div class="col-12 col-md-3 g-4 d-flex flex-wrap align-items-center gap-2 gap-md-4">
+                    <div class="col-12 col-md-4 col-xl-3 g-4 d-flex flex-wrap align-items-center gap-2 gap-md-4">
                         <section-main-avatar
                             :name="item.name"
                             :picture="item.profile_path"

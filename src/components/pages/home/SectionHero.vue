@@ -44,7 +44,7 @@ const getMovies = () => {
 
 <template>
   <div class="section-hero">
-      <div class="w-50 mb-5 d-flex align-items-center gap-2">
+      <div class="mb-5 d-flex align-items-center gap-2">
           <n-input
                 v-model:value="searchText"
                 round
@@ -76,7 +76,7 @@ const getMovies = () => {
 
 <style lang="scss">
 .section-hero {
-  height: 500px;
+  height: 45vh;
   background-color: rgba(0, 128, 0, 0.12);
   position: relative;
   z-index: 1;

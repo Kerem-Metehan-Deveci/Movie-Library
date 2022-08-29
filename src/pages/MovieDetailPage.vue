@@ -94,7 +94,7 @@ init();
 <style lang="scss">
 	.back {
         span {
-            font-size:3em;
+            font-size:2em;
             color:#F2C640;
             background:#262B37;
             display:table-cell;
