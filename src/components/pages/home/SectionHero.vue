@@ -43,33 +43,37 @@ const getMovies = () => {
 </script>
 
 <template>
-  <div class="section-hero">
-      <div class="mb-5 d-flex align-items-center gap-2">
-          <n-input
-                v-model:value="searchText"
-                round
-                placeholder="Search..."
-                size="large"
-                type="text"
-                status="warning"
-                @input="getMovies"
-          >
-              <template #suffix>
-                  <n-icon :component="SearchOutline" />
-              </template>
-          </n-input>
-          
-          <n-button
-              tertiary
-              circle
-              type="warning"
-              size="large"
-              @click="mainStore.toggleTheme"
-          >
-              <template #icon>
-                  <n-icon :component="themeIcon" />
-              </template>
-          </n-button>
+  <div class="section-hero ">
+      <div class="container">
+        <div class="row w-100">
+            <div class="col-12 offset-md-2 col-md-8 offset-xl-3 col-xl-6 mb-2 mb-md-5 d-flex align-items-center gap-2">
+                <n-input 
+                    v-model:value="searchText"
+                    round
+                    placeholder="Search..."
+                    size="large"
+                    type="text"
+                    status="warning"
+                    @input="getMovies"
+                >
+                    <template #suffix>
+                        <n-icon :component="SearchOutline" />
+                    </template>
+                </n-input>
+                
+                <n-button
+                    tertiary
+                    circle
+                    type="warning"
+                    size="large"
+                    @click="mainStore.toggleTheme"
+                >
+                    <template #icon>
+                        <n-icon :component="themeIcon" />
+                    </template>
+                </n-button>
+            </div>
+        </div>
       </div>
   </div>
 </template>
