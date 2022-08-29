@@ -15,7 +15,7 @@ export const useMovieStore = defineStore('movie', {
       async fetchMovies(payload) {
         const key = import.meta.env.VITE_API_KEY;
 
-        const { data } = await api.get('/search/movie/', {
+        const { data } = await api.get('/search/movie', {
           params: {
             query: payload.searchText
           }
