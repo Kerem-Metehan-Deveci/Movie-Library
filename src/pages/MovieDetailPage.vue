@@ -67,7 +67,7 @@ init();
         </div>
       </template>
       <template v-else>
-        <div class="d-flex gap-3 h-100">
+        <div class="row g-3 h-100">
             <div class="col-12 col-md-4 pt-5 px-5 bg-gray-200">
                 <section-sidebar
                     :image="movie.image"
