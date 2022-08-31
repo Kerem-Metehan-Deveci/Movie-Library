@@ -10,7 +10,7 @@ const props = defineProps({
 });
 const router = useRouter();
 const back =() => {
-    router.go()
+    router.go(-1)
 }
 </script>
 
