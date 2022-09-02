@@ -48,10 +48,7 @@ init();
             <template v-else>
                 <div class="text-center mt-5 bg-secondary bg-opacity-25 px-3 py-5 rounded">
                     <div class="display-3 fw-medium">
-                        Sonuc Bulunamadi!!
-                    </div>
-                    <div class="fs-3">
-                        Lutfen arama yapiniz
+                        There were no results !!
                     </div>
                 </div>
             </template>
